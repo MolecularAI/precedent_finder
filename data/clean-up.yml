@@ -1,0 +1,37 @@
+
+query_dataframe1:
+  query: "confidence>0.1"
+reactants2reagents:
+  in_column: mapped_rxn
+  out_column: ReactionSmilesClean
+remove_extra_atom_mapping:
+  in_column: ReactionSmilesClean
+  out_column: ReactionSmilesClean
+count_components:
+  in_column: ReactionSmilesClean
+query_dataframe2:
+  query: "NMappedReactants<5"
+query_dataframe3:
+  query: "NMappedProducts==1"
+query_dataframe4:
+  query: ~CuratedYield.isna()
+detect_reactive_functions:
+  in_column: ReactionSmilesClean
+  smarts_lib: group_smarts.json
+  rsmi_column: ReactionSmilesClean
+  max_reactants: 5
+query_dataframe5:
+  query: "ReactiveFunction!=''"
+drop_columns:
+  columns:
+    - BadMolecules
+    - ReactantSize
+    - ProductSize
+    - mapped_rxn
+    - confidence
+    - NReactants
+    - NMappedReactants
+    - NReagents
+    - NMappedReagents
+    - NProducts
+    - NMappedProducts

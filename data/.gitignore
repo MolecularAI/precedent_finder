@@ -1,0 +1,4 @@
+*.rsmi
+*rsmi.7z
+*.csv*
+*.npz

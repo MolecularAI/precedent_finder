@@ -1,0 +1,1 @@
+python ../precedent_finder.py --smiles `cat bh-reaction-mapped.smi` --output bh-reaction-precedents.csv
