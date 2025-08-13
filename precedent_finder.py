@@ -117,6 +117,10 @@ def find_precedents(
     function_key = "|".join(function_keys) 
 
     sel = metadata["ReactiveFunction"] == function_key
+    if sel.sum() == 0:
+        print(f"Could not find any precedents for {reaction_smiles} with the reaction function {function_key}")
+        return pd.DataFrame()
+    
     idx = metadata[sel].index
     sel_metadata = metadata[sel]
     sel_rfp = rfp_precomp[idx, :].toarray()
